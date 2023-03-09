@@ -5,7 +5,7 @@ import Menu from './Menu';
 
 const HomePage = () => {
     const location = useLocation();
-    const isProfilePage = location.pathname === '/' || location.pathname === '/bud-maps';
+    const isProfilePage = location.pathname === '/' || location.pathname === '/bud-maps/';
 
     return (
         <div >
