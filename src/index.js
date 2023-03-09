@@ -9,6 +9,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import TelegramApp from './TelegramApp';
+import ProfilePage from './Components/ProfilePage';
 import Navbar from './Components/Navigation';
 import HomePage from './Components/HomePage';
 import registerServiceWorker from './registerServiceWorker';
@@ -25,6 +26,7 @@ ReactDOM.render(
     <Router>
         <Navbar />
         <Route path='/tele' component={TelegramApp} />
+        <Route path='/profile' component={ProfilePage} />
         <Route path='' component={HomePage} />
     </Router>,
     document.getElementById('root')

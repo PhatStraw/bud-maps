@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
+import { useLocation } from 'react-router-dom';
 import MapContainer from './Map';
 import Menu from './Menu';
 
+const HomePage = () => {
+    const location = useLocation();
+    const isProfilePage = location.pathname === '/';
 
-class HomePage extends Component {
-
-    render() {
-
-        return (
-            <div >
-                <MapContainer />
-                <Menu />
-            </div>
-        );
-    }
+    return (
+        <div >
+            {isProfilePage &&  
+                <div>
+                    <MapContainer />
+                    <Menu />
+                </div>
+            }
+        </div>
+    );
 }
 
 

@@ -1,5 +1,5 @@
 import React, { Component, state, setState } from "react";
-import { useSwipeable } from "react-swipeable";
+import { useLocation } from 'react-router-dom';
 import { Global } from '@emotion/react';
 import {
   SwipeableDrawer,
@@ -15,17 +15,17 @@ import {
   Typography,
   Skeleton
 } from "@material-ui/core";
+import BasicCard from "./Card";
 
-const drawerBleeding = 150;
+const drawerBleeding = 200;
 
 const Root = styled('div')(({ theme }) => ({
     height: '100%',
-    backgroundColor: 'black',
+    backgroundColor: 'white',
   }));
   
   const StyledBox = styled(Box)(({ theme }) => ({
-    backgroundColor: 'black',
-    height: '100%'
+    backgroundColor: 'white',
   }));
   
   const Puller = styled(Box)(({ theme }) => ({
@@ -41,7 +41,6 @@ const Root = styled('div')(({ theme }) => ({
 const Menu = (props) => {
     const { window } = props;
     const [open, setOpen] = React.useState(false);
-  
     const toggleDrawer = (newOpen) => () => {
       setOpen(newOpen);
     };
@@ -55,7 +54,7 @@ const Menu = (props) => {
         <Global
           styles={{
             '.MuiDrawer-root > .MuiPaper-root': {
-              height: `calc(50% - ${drawerBleeding}px)`,
+              height: `calc(88% - ${drawerBleeding}px)`,
               overflow: 'visible',
             },
           }}
@@ -63,7 +62,7 @@ const Menu = (props) => {
         {/* <Box sx={{ textAlign: 'center', pt: 1 }}>
           <Button onClick={toggleDrawer(true)}>Open</Button>
         </Box> */}
-        <SwipeableDrawer
+       <SwipeableDrawer
           container={container}
           anchor="bottom"
           open={open}
@@ -78,7 +77,7 @@ const Menu = (props) => {
           <StyledBox
             sx={{
               position: 'absolute',
-              top: -drawerBleeding,
+              top: -drawerBleeding - 23,
               borderTopLeftRadius: 8,
               borderTopRightRadius: 8,
               visibility: 'visible',
@@ -87,23 +86,26 @@ const Menu = (props) => {
             }}
           >
             <Puller />
-            <Typography sx={{ p: 2, color: 'white' }}>51 results</Typography>
+            <Typography sx={{ p: 2, color: 'white' }}>5 results</Typography>
           </StyledBox>
           <StyledBox
             sx={{
-              px: 2,
-              pb: 2,
-              height: '100%',
-              overflow: 'auto',
-              color: 'white'
+                px: 2,
+                pb: 2,
+                height: '100vh',
+                overflow: 'auto',
+                position: 'absolute',
+                top: -drawerBleeding,
+                visibility: 'visible',
+                right: 0,
+                left: 0,
             }}
           >
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-            </ul>
+            <BasicCard setOpen={setOpen}/>
+            <BasicCard setOpen={setOpen} />
+            <BasicCard setOpen={setOpen} />
+            <BasicCard setOpen={setOpen} />
+            <BasicCard setOpen={setOpen} />
           </StyledBox>
         </SwipeableDrawer>
       </Root>
