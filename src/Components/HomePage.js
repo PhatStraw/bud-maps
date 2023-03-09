@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import MapContainer from './Map';
+import Menu from './Menu';
+
 
 class HomePage extends Component {
 
@@ -6,7 +9,8 @@ class HomePage extends Component {
 
         return (
             <div >
-          Hello
+                <MapContainer />
+                <Menu />
             </div>
         );
     }
