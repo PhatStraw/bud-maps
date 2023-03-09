@@ -16,16 +16,16 @@ import {
   Skeleton
 } from "@material-ui/core";
 
-const drawerBleeding = 56;
+const drawerBleeding = 150;
 
 const Root = styled('div')(({ theme }) => ({
     height: '100%',
-    backgroundColor:
-      theme.palette.mode === 'light' ? 'gray' : theme.palette.background.default,
+    backgroundColor: 'black',
   }));
   
   const StyledBox = styled(Box)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'light' ? '#fff' : 'gray',
+    backgroundColor: 'black',
+    height: '100%'
   }));
   
   const Puller = styled(Box)(({ theme }) => ({
@@ -87,7 +87,7 @@ const Menu = (props) => {
             }}
           >
             <Puller />
-            <Typography sx={{ p: 2, color: 'text.secondary' }}>51 results</Typography>
+            <Typography sx={{ p: 2, color: 'white' }}>51 results</Typography>
           </StyledBox>
           <StyledBox
             sx={{
@@ -95,9 +95,15 @@ const Menu = (props) => {
               pb: 2,
               height: '100%',
               overflow: 'auto',
+              color: 'white'
             }}
           >
-            {/* <Skeleton variant="rectangular" height="100%" /> */}
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
           </StyledBox>
         </SwipeableDrawer>
       </Root>
