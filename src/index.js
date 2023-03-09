@@ -9,6 +9,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import TelegramApp from './TelegramApp';
+import Navbar from './Components/Navigation';
+import HomePage from './Components/HomePage';
 import registerServiceWorker from './registerServiceWorker';
 import {
     OPTIMIZATIONS_FIRST_START,
@@ -17,10 +19,13 @@ import {
 } from './Constants';
 import TdLibController from './Controllers/TdLibController';
 import './index.css';
+import { Home } from '@material-ui/icons';
 
 ReactDOM.render(
     <Router>
-        <Route path='' component={TelegramApp} />
+        <Navbar />
+        <Route path='/tele' component={TelegramApp} />
+        <Route path='' component={HomePage} />
     </Router>,
     document.getElementById('root')
 );
