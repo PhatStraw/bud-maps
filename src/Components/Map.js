@@ -1,6 +1,6 @@
 import React from "react";
 import GoogleMapReact from 'google-map-react';
-
+import BasicCard from "./Card";
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 export default function SimpleMap(){

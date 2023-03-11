@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Menu,
-  MenuItem,
-} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import HomeIcon from '@material-ui/icons/Home';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 const Navbar = () => {
+  const [value, setValue] = React.useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -18,26 +17,18 @@ const Navbar = () => {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
-    <AppBar position="static" color="primary">
-      <Toolbar>
-        <IconButton edge="start" color="inherit" onClick={handleMenuOpen}>
-          <MenuIcon />
-        </IconButton>
-        <Menu
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleMenuClose}
-        >
-          <MenuItem onClick={handleMenuClose}>  <Link to="/">Home</Link></MenuItem>
-          <MenuItem onClick={handleMenuClose}><Link to="/tele">Tele</Link></MenuItem>
-          <MenuItem onClick={handleMenuClose}>Contact</MenuItem>
-        </Menu>
-        <Typography variant="h6" style={{ flexGrow: 1 }}>
-          My App
-        </Typography>
+    <AppBar position="fixed" color="primary" style={{ top: 'auto', bottom: '0', padding: 0, zIndex: 9999 }}>
+      <Toolbar style={{width: '100vw', padding: 0}}>
+        <BottomNavigation style={{display: 'flex', justifyContent: 'space-between', width: '100vw',}} value={value} onChange={handleChange} showLabels>
+        <BottomNavigationAction onClick={handleMenuClose} component={Link} to="/" label="Home" icon={<HomeIcon />} />
+        <BottomNavigationAction onClick={handleMenuClose} component={Link} to="/tele"  label="Tele" icon={<FavoriteIcon />} />
+         <BottomNavigationAction onClick={handleMenuClose} component={Link} to="/profile"  label="Profile" icon={<LocationOnIcon />} />
+       </BottomNavigation>
       </Toolbar>
     </AppBar>
   );

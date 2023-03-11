@@ -7,7 +7,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import TelegramApp from './TelegramApp';
 import ProfilePage from './Components/ProfilePage';
 import Navbar from './Components/Navigation';
@@ -24,10 +24,12 @@ import { Home } from '@material-ui/icons';
 
 ReactDOM.render(
     <Router>
+        <Switch>
+            <Route path='/tele' component={TelegramApp} />
+            <Route path='/profile' component={ProfilePage} />
+            <Route path='' component={HomePage} />
+        </Switch>
         <Navbar />
-        <Route path='/tele' component={TelegramApp} />
-        <Route path='/profile' component={ProfilePage} />
-        <Route path='' component={HomePage} />
     </Router>,
     document.getElementById('root')
 );

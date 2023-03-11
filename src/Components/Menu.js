@@ -1,31 +1,23 @@
-import React, { Component, state, setState } from "react";
-import { useLocation } from 'react-router-dom';
+import React from "react";
 import { Global } from '@emotion/react';
 import {
   SwipeableDrawer,
-  Button,
-  List,
-  ListItem,
   Box,
-  MailIcon,
-  ListItemText,
-  Divider,
   styled,
   CssBaseline,
   Typography,
-  Skeleton
 } from "@material-ui/core";
 import BasicCard from "./Card";
 
-const drawerBleeding = 200;
+const drawerBleeding = 265;
 
 const Root = styled('div')(({ theme }) => ({
     height: '100%',
-    backgroundColor: 'white',
+    backgroundColor: 'black',
   }));
   
   const StyledBox = styled(Box)(({ theme }) => ({
-    backgroundColor: 'white',
+    backgroundColor: 'black',
   }));
   
   const Puller = styled(Box)(({ theme }) => ({
@@ -56,13 +48,11 @@ const Menu = (props) => {
             '.MuiDrawer-root > .MuiPaper-root': {
               height: `calc(88% - ${drawerBleeding}px)`,
               overflow: 'visible',
+
             },
           }}
         />
-        {/* <Box sx={{ textAlign: 'center', pt: 1 }}>
-          <Button onClick={toggleDrawer(true)}>Open</Button>
-        </Box> */}
-       <SwipeableDrawer
+        <SwipeableDrawer
           container={container}
           anchor="bottom"
           open={open}
@@ -86,14 +76,13 @@ const Menu = (props) => {
             }}
           >
             <Puller />
-            <Typography sx={{ p: 2, color: 'white' }}>5 results</Typography>
+            <Typography sx={{ p: 2, color: 'black' }}>5 results</Typography>
           </StyledBox>
           <StyledBox
             sx={{
                 px: 2,
                 pb: 2,
                 height: '100vh',
-                overflow: 'auto',
                 position: 'absolute',
                 top: -drawerBleeding,
                 visibility: 'visible',
@@ -101,11 +90,14 @@ const Menu = (props) => {
                 left: 0,
             }}
           >
-            <BasicCard setOpen={setOpen}/>
+            {props.collectives.map((i) => <BasicCard collectives={i} setOpen={setOpen}/>)}
+            {/* <BasicCard setOpen={setOpen} />
             <BasicCard setOpen={setOpen} />
             <BasicCard setOpen={setOpen} />
             <BasicCard setOpen={setOpen} />
             <BasicCard setOpen={setOpen} />
+            <BasicCard setOpen={setOpen} />
+            <BasicCard setOpen={setOpen} /> */}
           </StyledBox>
         </SwipeableDrawer>
       </Root>
